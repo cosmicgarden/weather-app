@@ -10,11 +10,15 @@ import { WeatherData, WeatherToday, CityData } from './weather-data';
 })
 export class WeatherService {
   // private weatherUrl = 'https://www.metaweather.com/api/location'; // URL to web api
-  private weatherUrl = '/api/'; // URL to web api
+  // private weatherUrl = '/api/'; // URL to web api
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Access-Control-Allow-Origin' : '*' }),
+    headers: new HttpHeaders({ 'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS' }),
   };
+
+
 
   citySelected = new EventEmitter<number>();
 
@@ -46,7 +50,7 @@ export class WeatherService {
 
   /** GET CityWeather by id. Will 404 if id not found */
   getCityWeather(idCity: number): Observable<any> {
-    return this.http.get(`api/location/${idCity}`).pipe(
+    return this.http.get(`api/location/${idCity}`, {headers: this.httpOptions.headers}).pipe(
       map((data: any) => {
         const weatherData: WeatherData = {
           cityName: data.title,
