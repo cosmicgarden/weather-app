@@ -1,0 +1,7 @@
+<div class="row" style="margin-bottom: 5px;">
+    <div class="col-xs-12">
+        <select class="form-control" name="city" [(ngModel)]="property.city" (change)="changeCity($event)">
+            <option *ngFor="let city of cities" [value]="city.id">{{city.name}}</option> 
+        </select>
+    </div>
+</div>

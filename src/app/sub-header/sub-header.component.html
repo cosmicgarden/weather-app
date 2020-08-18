@@ -1,0 +1,12 @@
+<div *ngIf="cityData" class="container-fluid sub-header">
+    <h4 class="title">{{cityData.title}}</h4>
+    <div class="info">
+        Location Type: {{cityData.location_type}}
+        Woeid: {{cityData.woeid}}
+        Lattitude-Longitude: {{cityData.latt_long}}
+        Time Zone: {{cityData.timezone}}
+    </div>
+</div>
+<div *ngIf="!cityData">
+ Loading...
+</div>

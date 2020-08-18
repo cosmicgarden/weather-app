@@ -1,0 +1,52 @@
+<div *ngIf="weatherToday" class="container aside">
+    <div class="row">
+        <div>
+            <h3>Today Weather</h3>
+        </div>
+    </div>
+    <div class="row image">
+        <div>
+            <img src='https://www.metaweather.com/static/img/weather/{{weatherToday.weather_state_abbr}}.svg' alt="">
+            {{ weatherToday.weather_state_name }}
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <p>Max {{ weatherToday.max_temp | number : '1.1-1' }}°C</p>
+            <p>Min {{ weatherToday.min_temp | number : '1.1-1' }}°C</p>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <div class="arrow">{{weatherToday.wind_direction_compass}}</div>
+            <p>{{ weatherToday.wind_speed | number : '1.1-1' }} mph</p>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <h5>Humidity</h5>
+            <p>{{ weatherToday.humidity }} %</p>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <h5>Visibility</h5>
+            <p>{{ weatherToday.visibility | number : '1.1-1' }} miles</p>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <h5>Pressure</h5>
+            <p>{{ weatherToday.air_pressure }} mb</p>
+        </div>
+    </div>
+    <div class="row">
+        <div>
+            <h5>Confidence</h5>
+            <p>{{ weatherToday.predictability }} %</p>
+        </div>
+    </div>
+</div>
+<div *ngIf="!weatherToday">
+    <h3>Loading...</h3>
+</div>

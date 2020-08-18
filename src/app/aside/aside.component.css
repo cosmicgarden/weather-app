@@ -1,0 +1,22 @@
+.aside {
+    font-size: 0.8rem;
+}
+
+.aside h3 h2 {
+    font-size: 1rem;
+}
+
+.aside h5 {
+    font-size: .9rem;
+}
+
+.image {
+    font-style: italic;
+    color: darkblue;
+}
+
+.image img {
+    height: 50px;
+    width: 50px;
+    display: block;
+}
