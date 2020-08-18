@@ -18,8 +18,6 @@ export class WeatherService {
     'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS' }),
   };
 
-
-
   citySelected = new EventEmitter<number>();
 
   cityData: CityData = {
@@ -41,7 +39,7 @@ export class WeatherService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
-      console.log(`${operation} failed: ${error.message}`);
+      console.error(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
@@ -74,12 +72,9 @@ export class WeatherService {
           weatherData.temp.push(+day.the_temp.toFixed(1));
         });
         return {weatherData, weatherToday, cityData};
-      })
+      }),
+      tap((_) => console.log('fetched heroes')),
+      catchError(this.handleError<any>('getCityWeather', []))
     );
   }
-
-  processData(data: any) {
-    return data.consolidated_weather;
-  }
-
 }
