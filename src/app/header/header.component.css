@@ -1,5 +1,17 @@
 .header {
     background: linear-gradient(to right, #1fa2ca, #91bfe5);
-    height: 60px;
+    height: 2.5rem;
     color: #0341fc;
+    position: relative;
+}
+
+.header__title {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header h2 {
+    font-size: 1.2rem;
 }
